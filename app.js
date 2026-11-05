@@ -115,4 +115,8 @@ document.getElementById("restart-button").addEventListener("click", () => {
   renderQuestion();
 });
 
+document.getElementById("print-button").addEventListener("click", () => {
+  window.print();
+});
+
 renderQuestion();
