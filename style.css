@@ -88,59 +88,21 @@ h2 { margin: 0; font-size: clamp(1.35rem, 4vw, 1.7rem); line-height: 1.6; letter
 .axis-left, .axis-right { color: var(--blue); }
 .chart-label { color: #aaa39a; }.chart-label.top-left { top: 12px; left: 12px; }.chart-label.top-right { top: 12px; right: 12px; }.chart-label.bottom-left { bottom: 10px; left: 12px; }.chart-label.bottom-right { right: 12px; bottom: 10px; }
 .chart-point { position: absolute; z-index: 1; font-size: 1.85rem; line-height: 1; transform: translate(-50%, 50%); filter: drop-shadow(0 2px 2px rgba(0,0,0,.18)); transition: left .4s ease, bottom .4s ease; }
-.restart { padding: 11px 18px; cursor: pointer; border: 0; border-radius: 10px; color: var(--ink); background: #eee9e1; font: 600 .9rem "Noto Sans JP", sans-serif; }
-.restart:hover, .restart:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 
-@media (max-width: 480px) { .page-shell { width: min(100% -24px, 680px); padding-top: 40px; } .diagnosis-card { padding: 23px 18px; border-radius: 19px; } .progress-area { margin-bottom: 30px; } .answer { min-height: 62px; padding-left: 16px; font-size: .9rem; } .score-section { padding: 16px 10px; } .chart { height: 220px; margin: 30px 58px 36px; } .chart-label { font-size: .58rem; } .axis-left { left: -49px; } .axis-right { right: -49px; } }
-
-.result-actions {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.print-result {
-  padding: 11px 18px;
-  cursor: pointer;
-  border: 0;
-  border-radius: 10px;
-  color: #fff;
-  background: var(--ink);
-  font: 600 .9rem "Noto Sans JP", sans-serif;
-}
+.result-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+.print-result, .restart { padding: 11px 18px; cursor: pointer; border: 0; border-radius: 10px; font: 600 .9rem "Noto Sans JP", sans-serif; }
+.print-result { color: #fff; background: var(--ink); }
+.restart { color: var(--ink); background: #eee9e1; }
+.print-result:hover, .print-result:focus-visible, .restart:hover, .restart:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 
 @media print {
   @page { margin: 12mm; }
-
-  body {
-    min-width: 0;
-    min-height: 0;
-    background: #fff;
-  }
-
-  .hero,
-  .progress-area,
-  #question-view,
-  .note,
-  .result-actions {
-    display: none !important;
-  }
-
-  .page-shell {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-  }
-
-  .diagnosis-card {
-    overflow: visible;
-    padding: 0;
-    border: 0;
-    border-radius: 0;
-    box-shadow: none;
-  }
-
+  body { min-width: 0; min-height: 0; background: #fff; }
+  .hero, .progress-area, #question-view, .note, .result-actions { display: none !important; }
+  .page-shell { width: 100%; margin: 0; padding: 0; }
+  .diagnosis-card { overflow: visible; padding: 0; border: 0; border-radius: 0; box-shadow: none; }
   #result-view { padding: 0; }
   .score-section { break-inside: avoid; }
 }
+
+@media (max-width: 480px) { .page-shell { width: min(100% -24px, 680px); padding-top: 40px; } .diagnosis-card { padding: 23px 18px; border-radius: 19px; } .progress-area { margin-bottom: 30px; } .answer { min-height: 62px; padding-left: 16px; font-size: .9rem; } .score-section { padding: 16px 10px; } .chart { height: auto; aspect-ratio: 3 / 2; margin: 30px 50px 36px; } .chart-label { font-size: .58rem; } .axis-left { left: -49px; } .axis-right { right: -49px; } }
