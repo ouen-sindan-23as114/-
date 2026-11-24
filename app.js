@@ -136,6 +136,7 @@ function renderResult() {
 function renderSpecialResult() {
   progressArea.hidden = true;
   diagnosisCard.classList.add("has-special-result");
+  document.body.classList.add("showing-special-result");
   document.getElementById("special-name").textContent = state.profile.name;
   document.getElementById("special-favorite").textContent = state.profile.favorite;
   document.getElementById("special-message").textContent = state.profile.message;
@@ -167,6 +168,7 @@ function restartDiagnosis() {
   questionView.hidden = true;
   progressArea.hidden = true;
   diagnosisCard.classList.remove("has-special-result");
+  document.body.classList.remove("showing-special-result");
   document.getElementById("profile-form").reset();
   introView.hidden = false;
 }
