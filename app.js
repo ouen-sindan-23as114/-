@@ -38,6 +38,8 @@ const profiles = {
 const questionView = document.getElementById("question-view");
 const introView = document.getElementById("intro-view");
 const resultView = document.getElementById("result-view");
+const specialResultView = document.getElementById("special-result-view");
+const diagnosisCard = document.querySelector(".diagnosis-card");
 const progressArea = document.getElementById("progress-area");
 const stepLabel = document.getElementById("step-label");
 const progressBar = document.getElementById("progress-bar");
@@ -84,8 +86,13 @@ function chartPosition(score) {
 function renderResult() {
   const alignment = Math.round((state.answers.slice(0, 4).reduce((sum, value) => sum + value, 0) / 20) * 100);
   const expression = Math.round((state.answers.slice(4).reduce((sum, value) => sum + value, 0) / 20) * 100);
-  const [name, copy, traits, color, soft] = profiles[`${level(alignment)}-${level(expression)}`];
+  const profileKey = `${level(alignment)}-${level(expression)}`;
+  const [name, copy, traits, color, soft] = profiles[profileKey];
   questionView.hidden = true;
+  if (profileKey === "high-high") {
+    renderSpecialResult();
+    return;
+  }
   resultView.hidden = false;
   stepLabel.textContent = "RESULT";
   progressBar.style.width = "100%";
@@ -126,6 +133,15 @@ function renderResult() {
   });
 }
 
+function renderSpecialResult() {
+  progressArea.hidden = true;
+  diagnosisCard.classList.add("has-special-result");
+  document.getElementById("special-name").textContent = state.profile.name;
+  document.getElementById("special-favorite").textContent = state.profile.favorite;
+  document.getElementById("special-message").textContent = state.profile.message;
+  specialResultView.hidden = false;
+}
+
 document.getElementById("profile-form").addEventListener("submit", (event) => {
   event.preventDefault();
   const form = event.currentTarget;
@@ -142,18 +158,27 @@ document.getElementById("profile-form").addEventListener("submit", (event) => {
   renderQuestion();
 });
 
-document.getElementById("restart-button").addEventListener("click", () => {
+function restartDiagnosis() {
   state.step = 0;
   state.answers = [];
   state.profile = { name: "", favorite: "", message: "" };
   resultView.hidden = true;
+  specialResultView.hidden = true;
   questionView.hidden = true;
   progressArea.hidden = true;
+  diagnosisCard.classList.remove("has-special-result");
   document.getElementById("profile-form").reset();
   introView.hidden = false;
-});
+}
+
+document.getElementById("restart-button").addEventListener("click", restartDiagnosis);
+document.getElementById("special-restart-button").addEventListener("click", restartDiagnosis);
 
 document.getElementById("print-button").addEventListener("click", () => {
+  window.print();
+});
+
+document.getElementById("special-print-button").addEventListener("click", () => {
   window.print();
 });
 
