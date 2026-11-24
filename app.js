@@ -1,4 +1,8 @@
-const state = { step: 0, answers: [] };
+const state = {
+  step: 0,
+  answers: [],
+  profile: { name: "", favorite: "", message: "" }
+};
 
 const questions = [
   { dimension: "同調", item: "1｜ルールの明確さ", color: "coral", text: "応援するときは、決まった掛け声やお決まりのやり方がある方が安心する。" },
@@ -32,7 +36,9 @@ const profiles = {
 };
 
 const questionView = document.getElementById("question-view");
+const introView = document.getElementById("intro-view");
 const resultView = document.getElementById("result-view");
+const progressArea = document.getElementById("progress-area");
 const stepLabel = document.getElementById("step-label");
 const progressBar = document.getElementById("progress-bar");
 
@@ -87,8 +93,21 @@ function renderResult() {
   const mark = document.getElementById("result-letter");
   mark.textContent = "✦";
   mark.style.background = color;
+  document.getElementById("result-person").textContent = `${state.profile.name}さんの診断結果`;
   document.getElementById("result-name").textContent = name;
   document.getElementById("result-copy").textContent = copy;
+  const profileEl = document.getElementById("result-profile");
+  profileEl.replaceChildren();
+  [
+    ["好きなもの", state.profile.favorite],
+    ["推しについて一言", state.profile.message]
+  ].forEach(([label, value]) => {
+    const item = document.createElement("p");
+    const labelEl = document.createElement("span");
+    labelEl.textContent = label;
+    item.append(labelEl, value);
+    profileEl.append(item);
+  });
   document.getElementById("alignment-score").textContent = `${alignment}%`;
   document.getElementById("expression-score").textContent = `${expression}%`;
   const point = document.getElementById("chart-point");
@@ -107,16 +126,34 @@ function renderResult() {
   });
 }
 
+document.getElementById("profile-form").addEventListener("submit", (event) => {
+  event.preventDefault();
+  const form = event.currentTarget;
+  if (!form.reportValidity()) return;
+  const data = new FormData(form);
+  state.profile = {
+    name: data.get("name").trim(),
+    favorite: data.get("favorite").trim(),
+    message: data.get("message").trim()
+  };
+  introView.hidden = true;
+  progressArea.hidden = false;
+  questionView.hidden = false;
+  renderQuestion();
+});
+
 document.getElementById("restart-button").addEventListener("click", () => {
   state.step = 0;
   state.answers = [];
+  state.profile = { name: "", favorite: "", message: "" };
   resultView.hidden = true;
-  questionView.hidden = false;
-  renderQuestion();
+  questionView.hidden = true;
+  progressArea.hidden = true;
+  document.getElementById("profile-form").reset();
+  introView.hidden = false;
 });
 
 document.getElementById("print-button").addEventListener("click", () => {
   window.print();
 });
 
-renderQuestion();
