@@ -8,6 +8,7 @@
   --blue: #3d76d8;
   --blue-soft: #edf4ff;
   --line: #e7e1d8;
+  --font-main: "vdl-logog", "Noto Sans JP", sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -17,7 +18,7 @@ body {
   margin: 0;
   color: var(--ink);
   background: radial-gradient(circle at 12% 8%, #fffdf8 0 12%, transparent 36%), var(--ground);
-  font-family: "Noto Sans JP", sans-serif;
+  font-family: var(--font-main);
 }
 
 .page-shell { width: min(100% - 32px, 680px); margin: 0 auto; padding: 64px 0 46px; }
@@ -25,7 +26,7 @@ body {
 .eyebrow, .question-kicker, #step-label {
   margin: 0;
   color: var(--coral);
-  font-family: "DM Sans", sans-serif;
+  font-family: var(--font-main);
   font-size: .76rem;
   font-weight: 700;
   letter-spacing: .14em;
@@ -43,10 +44,10 @@ h2 { margin: 0; font-size: clamp(1.35rem, 4vw, 1.7rem); line-height: 1.6; letter
 .form-intro { margin: 10px 0 0; color: var(--muted); font-size: .88rem; line-height: 1.7; }
 .profile-form { display: grid; gap: 9px; margin-top: 25px; }
 .profile-form label { margin-top: 7px; color: var(--ink); font-size: .88rem; font-weight: 700; }
-.profile-form input, .profile-form textarea { width: 100%; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; color: var(--ink); background: #fff; font: 400 .95rem/1.6 "Noto Sans JP", sans-serif; }
+.profile-form input, .profile-form textarea { width: 100%; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; color: var(--ink); background: #fff; font: 400 .95rem/1.6 var(--font-main); }
 .profile-form textarea { resize: vertical; }
 .profile-form input:focus, .profile-form textarea:focus { outline: 2px solid var(--coral); outline-offset: 2px; border-color: var(--coral); }
-.start-diagnosis { margin-top: 15px; padding: 14px 18px; cursor: pointer; border: 0; border-radius: 10px; color: #fff; background: var(--coral); font: 700 .95rem "Noto Sans JP", sans-serif; }
+.start-diagnosis { margin-top: 15px; padding: 14px 18px; cursor: pointer; border: 0; border-radius: 10px; color: #fff; background: var(--coral); font: 700 .95rem var(--font-main); }
 .start-diagnosis:hover, .start-diagnosis:focus-visible { outline: 2px solid var(--coral); outline-offset: 3px; filter: brightness(.96); }
 .answers { display: grid; gap: 12px; margin-top: 28px; }
 .answer {
@@ -61,7 +62,7 @@ h2 { margin: 0; font-size: clamp(1.35rem, 4vw, 1.7rem); line-height: 1.6; letter
   border-radius: 14px;
   color: var(--ink);
   background: #fff;
-  font: 500 1rem/1.65 "Noto Sans JP", sans-serif;
+  font: 500 1rem/1.65 var(--font-main);
   text-align: left;
   transition: transform .18s ease, border-color .18s ease, background .18s ease;
 }
@@ -73,7 +74,7 @@ h2 { margin: 0; font-size: clamp(1.35rem, 4vw, 1.7rem); line-height: 1.6; letter
 .note { margin-top: 22px; text-align: center; font-size: .8rem; }
 
 #result-view { text-align: center; padding: 4px 0 3px; }
-.result-mark { display: grid; width: 68px; height: 68px; margin: 19px auto 16px; place-items: center; border-radius: 50%; color: #fff; font: 700 2rem "DM Sans", sans-serif; }
+.result-mark { display: grid; width: 68px; height: 68px; margin: 19px auto 16px; place-items: center; border-radius: 50%; color: #fff; font: 700 2rem var(--font-main); }
 .result-person { margin: 0 0 7px; color: var(--muted); font-size: .88rem; }
 .result-copy { max-width: 490px; margin: 17px auto 0; color: var(--muted); font-size: .96rem; line-height: 1.9; text-align: left; }
 .result-profile { display: grid; gap: 8px; margin: 18px 0 0; padding: 14px 16px; border-radius: 12px; background: #f7f4ee; text-align: left; }
@@ -99,7 +100,7 @@ h2 { margin: 0; font-size: clamp(1.35rem, 4vw, 1.7rem); line-height: 1.6; letter
 .score-numbers div:first-child { color: var(--coral); background: var(--coral-soft); }
 .score-numbers div:nth-child(2) { color: var(--blue); background: var(--blue-soft); }
 .score-numbers span { display: block; color: var(--muted); font-size: .72rem; }
-.score-numbers strong { display: block; margin-top: 2px; font: 700 1.28rem "DM Sans", sans-serif; }
+.score-numbers strong { display: block; margin-top: 2px; font: 700 1.28rem var(--font-main); }
 .chart { position: relative; height: 250px; margin: 32px 68px 38px; border-left: 1px solid #b9b3aa; border-bottom: 1px solid #b9b3aa; background: #fbfaf7; }
 .chart-grid { position: absolute; inset: 0; background: linear-gradient(to right, transparent 49.7%, #ddd7cf 50%, transparent 50.3%), linear-gradient(to bottom, transparent 49.7%, #ddd7cf 50%, transparent 50.3%); }
 .axis-top, .axis-bottom, .axis-left, .axis-right, .chart-label { position: absolute; color: var(--muted); font-size: .65rem; line-height: 1.3; white-space: nowrap; }
@@ -113,13 +114,13 @@ h2 { margin: 0; font-size: clamp(1.35rem, 4vw, 1.7rem); line-height: 1.6; letter
 .chart-point { position: absolute; z-index: 1; font-size: 1.85rem; line-height: 1; transform: translate(-50%, 50%); filter: drop-shadow(0 2px 2px rgba(0,0,0,.18)); transition: left .4s ease, bottom .4s ease; }
 
 .result-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
-.print-result, .restart { padding: 11px 18px; cursor: pointer; border: 0; border-radius: 10px; font: 600 .9rem "Noto Sans JP", sans-serif; }
+.print-result, .restart { padding: 11px 18px; cursor: pointer; border: 0; border-radius: 10px; font: 600 .9rem var(--font-main); }
 .print-result { color: #fff; background: var(--ink); }
 .restart { color: var(--ink); background: #eee9e1; }
 .print-result:hover, .print-result:focus-visible, .restart:hover, .restart:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 
 @media print {
-  @page { margin: 12mm; }
+  @page { size: 89mm 127mm; margin: 0; }
   body { min-width: 0; min-height: 0; background: #fff; }
   .hero, .progress-area, #intro-view, #question-view, .note, .result-actions { display: none !important; }
   .page-shell { width: 100%; margin: 0; padding: 0; }
