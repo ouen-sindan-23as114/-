@@ -19,12 +19,30 @@
     </section>
 
     <section class="diagnosis-card" aria-live="polite">
-      <div class="progress-area" aria-label="診断の進捗">
+      <div class="progress-area" id="progress-area" aria-label="診断の進捗" hidden>
         <span id="step-label">QUESTION 1 / 8</span>
         <div class="progress-track"><div class="progress-bar" id="progress-bar"></div></div>
       </div>
 
-      <div id="question-view">
+      <section id="intro-view" aria-labelledby="start-title">
+        <p class="question-kicker">ABOUT YOU</p>
+        <h2 id="start-title">まず、あなたのことを教えてください</h2>
+        <p class="form-intro">入力した内容は、この診断結果の画面だけに表示されます。</p>
+        <form id="profile-form" class="profile-form">
+          <label for="visitor-name">名前</label>
+          <input id="visitor-name" name="name" type="text" autocomplete="name" maxlength="30" placeholder="例：さくら" required>
+
+          <label for="favorite-thing">好きなもの</label>
+          <input id="favorite-thing" name="favorite" type="text" maxlength="50" placeholder="例：スポーツ観戦、音楽" required>
+
+          <label for="support-message">推しについて一言</label>
+          <textarea id="support-message" name="message" rows="3" maxlength="120" placeholder="例：いつも元気をもらっています！" required></textarea>
+
+          <button class="start-diagnosis" type="submit">診断をはじめる</button>
+        </form>
+      </section>
+
+      <div id="question-view" hidden>
         <p class="question-kicker" id="question-kicker">大切にしたいこと</p>
         <h2 id="question-text">応援で一番大事なのは、どちらに近い？</h2>
         <div class="answers" id="answers"></div>
@@ -33,8 +51,10 @@
       <div id="result-view" hidden>
         <p class="question-kicker">YOUR SUPPORTER STYLE</p>
         <div class="result-mark" id="result-letter" aria-hidden="true"></div>
+        <p class="result-person" id="result-person"></p>
         <h2 id="result-name"></h2>
         <p class="result-copy" id="result-copy"></p>
+        <div class="result-profile" id="result-profile"></div>
         <div class="result-traits" id="result-traits"></div>
         <section class="score-section" aria-labelledby="score-title">
           <h3 id="score-title">あなたの診断チャート</h3>
