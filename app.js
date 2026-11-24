@@ -95,9 +95,9 @@ function renderResult() {
   stepLabel.textContent = "RESULT";
   progressBar.style.width = "100%";
   progressBar.style.background = color;
-  const mark = document.getElementById("result-letter");
-  mark.textContent = "✦";
-  mark.style.background = color;
+  const illustration = document.getElementById("result-illustration");
+  illustration.className = `result-illustration style-${profileKey}`;
+  illustration.setAttribute("aria-label", `${name}のイラスト`);
   document.getElementById("result-person").textContent = `${state.profile.name}さんの診断結果`;
   document.getElementById("result-name").textContent = name;
   document.getElementById("result-copy").textContent = copy;
