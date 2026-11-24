@@ -80,6 +80,9 @@ h2 { margin: 0; font-size: clamp(1.35rem, 4vw, 1.7rem); line-height: 1.6; letter
 .result-profile p { margin: 0; color: var(--ink); font-size: .83rem; line-height: 1.6; overflow-wrap: anywhere; }
 .result-profile span { display: block; margin-bottom: 2px; color: var(--muted); font-size: .7rem; font-weight: 700; }
 .diagnosis-card.has-special-result { overflow: visible; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
+.showing-special-result { background: #f4d8e7; }
+.showing-special-result .page-shell { width: min(100%, 620px); padding: 0; }
+.showing-special-result .hero, .showing-special-result .note { display: none; }
 .special-result-sheet { position: relative; width: min(100%, 620px); margin: 0 auto; }
 .special-result-sheet img { display: block; width: 100%; height: auto; }
 .special-field { position: absolute; left: 8%; width: 84%; margin: 0; color: #29252d; font-weight: 600; overflow-wrap: anywhere; }
