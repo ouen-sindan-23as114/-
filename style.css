@@ -79,6 +79,14 @@ h2 { margin: 0; font-size: clamp(1.35rem, 4vw, 1.7rem); line-height: 1.6; letter
 .result-profile { display: grid; gap: 8px; margin: 18px 0 0; padding: 14px 16px; border-radius: 12px; background: #f7f4ee; text-align: left; }
 .result-profile p { margin: 0; color: var(--ink); font-size: .83rem; line-height: 1.6; overflow-wrap: anywhere; }
 .result-profile span { display: block; margin-bottom: 2px; color: var(--muted); font-size: .7rem; font-weight: 700; }
+.diagnosis-card.has-special-result { overflow: visible; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
+.special-result-sheet { position: relative; width: min(100%, 620px); margin: 0 auto; }
+.special-result-sheet img { display: block; width: 100%; height: auto; }
+.special-field { position: absolute; left: 8%; width: 84%; margin: 0; color: #29252d; font-weight: 600; overflow-wrap: anywhere; }
+.special-name { top: 51.2%; font-size: clamp(1rem, 3.4vw, 1.65rem); line-height: 1.2; }
+.special-favorite { top: 64.2%; font-size: clamp(.78rem, 2.65vw, 1.25rem); line-height: 1.35; }
+.special-message { top: 80.1%; font-size: clamp(.78rem, 2.65vw, 1.25rem); line-height: 1.45; }
+.special-actions { margin-top: 18px; }
 .result-traits { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 24px 0; }
 .trait { padding: 7px 12px; border-radius: 999px; font-size: .78rem; font-weight: 600; }
 .score-section { margin: 28px 0 25px; padding: 20px; border: 1px solid var(--line); border-radius: 16px; background: #fff; text-align: left; }
@@ -110,11 +118,12 @@ h2 { margin: 0; font-size: clamp(1.35rem, 4vw, 1.7rem); line-height: 1.6; letter
 @media print {
   @page { margin: 12mm; }
   body { min-width: 0; min-height: 0; background: #fff; }
-  .hero, .progress-area, #question-view, .note, .result-actions { display: none !important; }
+  .hero, .progress-area, #intro-view, #question-view, .note, .result-actions { display: none !important; }
   .page-shell { width: 100%; margin: 0; padding: 0; }
   .diagnosis-card { overflow: visible; padding: 0; border: 0; border-radius: 0; box-shadow: none; }
   #result-view { padding: 0; }
   .score-section { break-inside: avoid; }
+  .special-result-sheet { width: 100%; max-width: none; }
 }
 
 @media (max-width: 480px) { .page-shell { width: min(100% -24px, 680px); padding-top: 40px; } .diagnosis-card { padding: 23px 18px; border-radius: 19px; } .progress-area { margin-bottom: 30px; } .answer { min-height: 62px; padding-left: 16px; font-size: .9rem; } .score-section { padding: 16px 10px; } .chart { height: auto; aspect-ratio: 3 / 2; margin: 30px 50px 36px; } .chart-label { font-size: .58rem; } .axis-left { left: -49px; } .axis-right { right: -49px; } }
