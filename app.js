@@ -91,9 +91,6 @@ function renderResult() {
   currentProfileKey = profileKey;
   const [name, copy, traits, color, soft] = profiles[profileKey];
   questionView.hidden = true;
-  if (profileKey === "high-high") {
-    prepareSpecialResult();
-  }
   resultView.hidden = false;
   stepLabel.textContent = "RESULT";
   progressBar.style.width = "100%";
@@ -177,7 +174,7 @@ document.getElementById("special-restart-button").addEventListener("click", rest
 
 function printResult() {
   if (currentProfileKey === "high-high") {
-    specialResultView.hidden = false;
+    prepareSpecialResult();
     document.body.classList.add("printing-special-result");
   }
   window.print();
