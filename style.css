@@ -128,6 +128,10 @@ h2 { margin: 0; font-size: clamp(1.35rem, 4vw, 1.7rem); line-height: 1.6; letter
   #result-view { padding: 0; }
   .score-section { break-inside: avoid; }
   .special-result-sheet { width: 100%; max-width: none; }
+  body.printing-special-result .page-shell { width: 100%; padding: 0; }
+  body.printing-special-result .diagnosis-card { overflow: visible; padding: 0; border: 0; border-radius: 0; box-shadow: none; }
+  body.printing-special-result #result-view { display: none !important; }
+  body.printing-special-result #special-result-view { display: block !important; }
 }
 
 @media (max-width: 480px) { .page-shell { width: min(100% -24px, 680px); padding-top: 40px; } .diagnosis-card { padding: 23px 18px; border-radius: 19px; } .progress-area { margin-bottom: 30px; } .answer { min-height: 62px; padding-left: 16px; font-size: .9rem; } .score-section { padding: 16px 10px; } .chart { height: auto; aspect-ratio: 3 / 2; margin: 30px 50px 36px; } .chart-label { font-size: .58rem; } .axis-left { left: -49px; } .axis-right { right: -49px; } }
