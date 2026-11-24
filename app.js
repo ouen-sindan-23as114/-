@@ -3,6 +3,7 @@ const state = {
   answers: [],
   profile: { name: "", favorite: "", message: "" }
 };
+let currentProfileKey = null;
 
 const questions = [
   { dimension: "同調", item: "1｜ルールの明確さ", color: "coral", text: "応援するときは、決まった掛け声やお決まりのやり方がある方が安心する。" },
@@ -87,11 +88,11 @@ function renderResult() {
   const alignment = Math.round((state.answers.slice(0, 4).reduce((sum, value) => sum + value, 0) / 20) * 100);
   const expression = Math.round((state.answers.slice(4).reduce((sum, value) => sum + value, 0) / 20) * 100);
   const profileKey = `${level(alignment)}-${level(expression)}`;
+  currentProfileKey = profileKey;
   const [name, copy, traits, color, soft] = profiles[profileKey];
   questionView.hidden = true;
   if (profileKey === "high-high") {
-    renderSpecialResult();
-    return;
+    prepareSpecialResult();
   }
   resultView.hidden = false;
   stepLabel.textContent = "RESULT";
@@ -133,10 +134,7 @@ function renderResult() {
   });
 }
 
-function renderSpecialResult() {
-  progressArea.hidden = true;
-  diagnosisCard.classList.add("has-special-result");
-  document.body.classList.add("showing-special-result");
+function prepareSpecialResult() {
   document.getElementById("special-name").textContent = state.profile.name;
   document.getElementById("special-favorite").textContent = state.profile.favorite;
   document.getElementById("special-message").textContent = state.profile.message;
@@ -163,6 +161,7 @@ function restartDiagnosis() {
   state.step = 0;
   state.answers = [];
   state.profile = { name: "", favorite: "", message: "" };
+  currentProfileKey = null;
   resultView.hidden = true;
   specialResultView.hidden = true;
   questionView.hidden = true;
@@ -176,11 +175,22 @@ function restartDiagnosis() {
 document.getElementById("restart-button").addEventListener("click", restartDiagnosis);
 document.getElementById("special-restart-button").addEventListener("click", restartDiagnosis);
 
-document.getElementById("print-button").addEventListener("click", () => {
+function printResult() {
+  if (currentProfileKey === "high-high") {
+    specialResultView.hidden = false;
+    document.body.classList.add("printing-special-result");
+  }
   window.print();
+}
+
+window.addEventListener("afterprint", () => {
+  document.body.classList.remove("printing-special-result");
+  specialResultView.hidden = true;
 });
 
+document.getElementById("print-button").addEventListener("click", printResult);
+
 document.getElementById("special-print-button").addEventListener("click", () => {
-  window.print();
+  printResult();
 });
 
