@@ -74,16 +74,12 @@ h2 { margin: 0; font-size: clamp(1.35rem, 4vw, 1.7rem); line-height: 1.6; letter
 .note { margin-top: 22px; text-align: center; font-size: .8rem; }
 
 #result-view { text-align: center; padding: 4px 0 3px; }
-.result-illustration { width: min(100%, 230px); aspect-ratio: 1; margin: 12px auto 9px; background: url("assets/supporter-styles.png") 0 0 / 300% 300% no-repeat; }
-.result-illustration.style-high-high { background-position: 0 0; }
-.result-illustration.style-high-mid { background-position: 50% 0; }
-.result-illustration.style-high-low { background-position: 100% 0; }
-.result-illustration.style-mid-high { background-position: 0 50%; }
-.result-illustration.style-mid-mid { background-position: 50% 50%; }
-.result-illustration.style-mid-low { background-position: 100% 50%; }
-.result-illustration.style-low-high { background-position: 0 100%; }
-.result-illustration.style-low-mid { background-position: 50% 100%; }
-.result-illustration.style-low-low { background-position: 100% 100%; }
+.result-illustration { position: relative; overflow: hidden; width: min(100%, 230px); aspect-ratio: 1; margin: 12px auto 9px; background: #fff; }
+.result-illustration img { position: absolute; width: 300%; max-width: none; height: auto; top: 0; left: 0; }
+.result-illustration.style-high-mid img, .result-illustration.style-mid-mid img, .result-illustration.style-low-mid img { left: -100%; }
+.result-illustration.style-high-low img, .result-illustration.style-mid-low img, .result-illustration.style-low-low img { left: -200%; }
+.result-illustration.style-mid-high img, .result-illustration.style-mid-mid img, .result-illustration.style-mid-low img { top: -100%; }
+.result-illustration.style-low-high img, .result-illustration.style-low-mid img, .result-illustration.style-low-low img { top: -200%; }
 .result-person { margin: 0 0 7px; color: var(--muted); font-size: .88rem; }
 .result-copy { max-width: 490px; margin: 17px auto 0; color: var(--muted); font-size: .96rem; line-height: 1.9; text-align: left; }
 .result-profile { display: grid; gap: 8px; margin: 18px 0 0; padding: 14px 16px; border-radius: 12px; background: #f7f4ee; text-align: left; }
