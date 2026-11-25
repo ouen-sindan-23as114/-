@@ -144,3 +144,11 @@ h2 { margin: 0; font-size: clamp(1.35rem, 4vw, 1.7rem); line-height: 1.6; letter
 }
 
 @media (max-width: 480px) { .page-shell { width: min(100% -24px, 680px); padding-top: 40px; } .diagnosis-card { padding: 23px 18px; border-radius: 19px; } .progress-area { margin-bottom: 30px; } .answer { min-height: 62px; padding-left: 16px; font-size: .9rem; } .score-section { padding: 16px 10px; } .chart { height: auto; aspect-ratio: 3 / 2; margin: 30px 50px 36px; } .chart-label { font-size: .58rem; } .axis-left { left: -49px; } .axis-right { right: -49px; } }
+
+.special-result[data-card]:not([data-card="1"]) .special-name { top: 52.2%; }
+.special-result[data-card]:not([data-card="1"]) .special-favorite { top: 64.2%; }
+.special-result[data-card]:not([data-card="1"]) .special-message { top: 80.5%; }
+@media print {
+  .special-field { font-family: var(--font-main); font-size: 3.2mm; font-weight: 400; line-height: 1.35; white-space: pre-wrap; }
+  .special-name { font-size: 4mm; }
+}

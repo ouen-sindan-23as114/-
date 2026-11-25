@@ -132,6 +132,10 @@ function renderResult() {
 }
 
 function prepareSpecialResult() {
+  const cards = { "high-high": 1, "high-mid": 2, "high-low": 3, "mid-high": 4, "mid-mid": 5, "mid-low": 6, "low-high": 7, "low-mid": 8, "low-low": 9 };
+  const number = cards[currentProfileKey];
+  specialResultView.dataset.card = number;
+  specialResultView.querySelector("img").src = number === 1 ? "assets/high-high-result-template.png" : `assets/print-${number}.png`;
   document.getElementById("special-name").textContent = state.profile.name;
   document.getElementById("special-favorite").textContent = state.profile.favorite;
   document.getElementById("special-message").textContent = state.profile.message;
@@ -173,7 +177,7 @@ document.getElementById("restart-button").addEventListener("click", restartDiagn
 document.getElementById("special-restart-button").addEventListener("click", restartDiagnosis);
 
 function printResult() {
-  if (currentProfileKey === "high-high") {
+  if (currentProfileKey) {
     prepareSpecialResult();
     document.body.classList.add("printing-special-result");
   }
