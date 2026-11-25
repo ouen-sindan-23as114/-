@@ -129,7 +129,7 @@ h2 { margin: 0; font-size: clamp(1.35rem, 4vw, 1.7rem); line-height: 1.6; letter
 .print-result:hover, .print-result:focus-visible, .restart:hover, .restart:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 
 @media print {
-  @page { size: 89mm 127mm; margin: 0; }
+  @page { size: 89mm 127mm; margin: 4mm; }
   body { min-width: 0; min-height: 0; background: #fff; }
   .hero, .progress-area, #intro-view, #question-view, .note, .result-actions { display: none !important; }
   .page-shell { width: 100%; margin: 0; padding: 0; }
