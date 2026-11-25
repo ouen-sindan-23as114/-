@@ -97,6 +97,8 @@ function renderResult() {
   progressBar.style.background = color;
   const illustration = document.getElementById("result-illustration");
   illustration.className = `result-illustration style-${profileKey}`;
+  const imageNumbers = { "high-high": 1, "high-mid": 2, "high-low": 3, "mid-high": 4, "mid-mid": 5, "mid-low": 6, "low-high": 7, "low-mid": 8, "low-low": 9 };
+  illustration.querySelector("img").src = `assets/result-type-${imageNumbers[profileKey]}.jpg`;
   illustration.setAttribute("aria-label", `${name}のイラスト`);
   document.getElementById("result-person").textContent = `${state.profile.name}さんの診断結果`;
   document.getElementById("result-name").textContent = name;
