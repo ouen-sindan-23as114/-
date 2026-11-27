@@ -91,7 +91,7 @@ h2 { margin: 0; font-size: clamp(1.35rem, 4vw, 1.7rem); line-height: 1.6; letter
 .showing-special-result .hero, .showing-special-result .note { display: none; }
 .special-result-sheet { position: relative; width: min(100%, 620px); margin: 0 auto; }
 .special-result-sheet img { display: block; width: 100%; height: auto; }
-.special-field { position: absolute; left: 8%; width: 84%; margin: 0; color: #29252d; font-weight: 600; overflow-wrap: anywhere; }
+.special-field { position: absolute; left: 8%; width: 84%; margin: 0; color: #29252d; font-weight: 600; text-align: center; overflow-wrap: anywhere; }
 .special-name { top: 51.2%; font-size: clamp(1rem, 3.4vw, 1.65rem); line-height: 1.2; }
 .special-favorite { top: 64.2%; font-size: clamp(.78rem, 2.65vw, 1.25rem); line-height: 1.35; }
 .special-message { top: 80.1%; font-size: clamp(.78rem, 2.65vw, 1.25rem); line-height: 1.45; }
